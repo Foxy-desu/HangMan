@@ -7,7 +7,9 @@
     "build": "webpack",
     "lint": "npx eslint ./src/**/*.js",
     "format": "prettier ./src/**/* --check",
-    "fix": "npm run format -- --write && npm run lint -- --fix"
+    "fix": "npm run format -- --write && npm run lint -- --fix",
+    "stylelint": "npx stylelint \"./src/styles/**/*.{css,scss,sass}\"",
+    "style:fix": "npm run stylelint -- --fix"
   },
   "repository": {
     "type": "git",
