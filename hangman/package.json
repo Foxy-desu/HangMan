@@ -1,0 +1,36 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "check": "npx eslint /src --ext .js",
+    "fix": "npx eslint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolling-scopes-school/foxy-desu-JSFE2023Q4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolling-scopes-school/foxy-desu-JSFE2023Q4/issues"
+  },
+  "homepage": "https://github.com/rolling-scopes-school/foxy-desu-JSFE2023Q4#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^8.0.3",
+    "prettier": "3.1.1",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run fix"
+    }
+  }
+}
