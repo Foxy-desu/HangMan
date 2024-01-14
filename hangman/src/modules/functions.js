@@ -32,3 +32,27 @@ export function chooseWord(words){
   console.log(result);
   return result;
 };
+export function insertPopup(popupCreator) {
+  const elems = popupCreator;
+  
+  function applyClassname() {
+    elems.popup.className = 'popup';
+    elems.modal.className = 'modal';
+    elems.newGameBtn.className = 'modal__btn';
+    elems.messageWrap.className = 'modal__msg';
+    elems.messageHeading.className = 'modal__msgHeading';
+    elems.messageDetails.className = 'modal__msgDetails';
+  }applyClassname();
+
+  function appendElems() {
+    document.body.append(elems.popup);
+    elems.popup.append(elems.modal);
+    elems.modal.append(elems.messageWrap, elems.newGameBtn);
+    elems.messageWrap.append(elems.messageHeading, elems.messageDetails);
+  }appendElems();
+  
+}
+export function removePopup(popupCreator) {
+  const elems = popupCreator;
+  elems.popup.remove();
+}
