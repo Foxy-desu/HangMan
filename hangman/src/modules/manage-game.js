@@ -4,8 +4,9 @@ export function manageGame(wordObj, elements) {
     let currentWord = chooseWord(wordObj);
     let wordLen = currentWord.word.length;
   
-    let mistakes = 0;
-    let totalPossibleMistakes = 6; //equals the number of bodyparts of the hangman
+    let hitBtns = new Set();
+    let mistakesCount = 0;
+    let totalPossibleMistakesCount = 6; //equals the number of bodyparts of the hangman
     let rightAnswers = 0;
   
     let currentLetter;
@@ -19,12 +20,12 @@ export function manageGame(wordObj, elements) {
     elements.wordHint.innerText = hint;
     };
     function insertGuessHint() {
-    const wrong = mistakes;
-    const total = totalPossibleMistakes;
+    const wrong = mistakesCount;
+    const total = totalPossibleMistakesCount;
     elements.guessHintSpan.innerText = `${wrong} / ${total}`;
     };
     function countChecker() {
-        elements.guessHintSpan.innerText = `${mistakes} / ${totalPossibleMistakes}`;
+        elements.guessHintSpan.innerText = `${mistakesCount} / ${totalPossibleMistakesCount}`;
         function blockKeys() {
             Array.from(elements.keyboard.children).forEach((key) => {
                 key.classList.add('keyboard__button_active');
@@ -32,7 +33,7 @@ export function manageGame(wordObj, elements) {
             })
         }
     //runs on btn click
-    if(mistakes === totalPossibleMistakes) {
+    if(mistakesCount === totalPossibleMistakesCount) {
         blockKeys();
         setTimeout(resetGame, 5000);
         //run function to create a modal window for loosing the game
@@ -54,14 +55,14 @@ export function manageGame(wordObj, elements) {
         wordArr.forEach((letter, index) => {
         if (currentLetter === letter) {
             letterBlocks[index].innerText = currentLetter.toLowerCase();
-                rightAnswers ++;
+                rightAnswers++;
                 console.log(rightAnswers);
             }
         }
         );
     } else {
-        mistakes ++;
-        console.log(mistakes);
+        mistakesCount ++;
+        console.log(mistakesCount);
     }
     };
     function keyboardHandler(e) {
@@ -73,6 +74,29 @@ export function manageGame(wordObj, elements) {
             letterChecker(); 
             countChecker();
         } else return;
+    };
+    function physicKeysHandler(e) {
+        // e = e || window.event;
+        const charCode = e.keyCode;
+        const charStr = String.fromCharCode(charCode);
+        console.log(charStr);
+
+        function findBtn() {
+            const buttons = Array.from(elements.keyboard.children);
+            buttons.forEach((btn) => {
+                if (btn.id === charStr && !hitBtns.has(charStr)) {
+                    btn.classList.add('keyboard__button_active');
+                    btn.setAttribute('disabled', '');
+                    currentLetter = btn.innerText;
+                    hitBtns.add(charStr);
+                    letterChecker(); 
+                    countChecker(); 
+                }else return;
+            })
+        }
+        findBtn();
+
+        
     };
     function resetGame() {
         resetParams();
@@ -89,9 +113,10 @@ export function manageGame(wordObj, elements) {
         })
     }
     function resetParams() {
-        mistakes = 0;
+        mistakesCount = 0;
         rightAnswers = 0;
         currentLetter = '';
+        hitBtns.clear();
     }
     function resetWord() {
         currentWord = chooseWord(wordObj);
@@ -99,7 +124,7 @@ export function manageGame(wordObj, elements) {
     }
 
     elements.keyboard.addEventListener('click', keyboardHandler);
-     
+    document.addEventListener('keypress', physicKeysHandler);
     insertWordBlocks();
     insertWordHint();
     insertGuessHint(); 
