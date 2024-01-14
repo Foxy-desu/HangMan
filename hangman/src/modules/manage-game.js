@@ -1,4 +1,6 @@
 import { chooseWord, createLetterBlocks } from "./functions";
+import { popupElements } from "./popup";
+import { insertPopup, removePopup } from "./functions";
 
 export function manageGame(wordObj, elements) {
     let currentWord = chooseWord(wordObj);
@@ -26,22 +28,44 @@ export function manageGame(wordObj, elements) {
     };
     function countChecker() {
         elements.guessHintSpan.innerText = `${mistakesCount} / ${totalPossibleMistakesCount}`;
+        const popupElems = popupElements();
+        
         function blockKeys() {
             Array.from(elements.keyboard.children).forEach((key) => {
                 key.classList.add('keyboard__button_active');
                 key.setAttribute('disabled','');
             })
+        };
+        function insertText(heading, details){
+            popupElems.messageHeading.innerText = heading;
+            popupElems.messageDetails.innerText = details;
+            popupElems.newGameBtn.innerText = 'Start new game';
         }
     //runs on btn click
     if(mistakesCount === totalPossibleMistakesCount) {
+        
         blockKeys();
-        setTimeout(resetGame, 5000);
+        setTimeout(()=> {
+            insertPopup(popupElems);
+            insertText(`Game Over`, `The word was ${currentWord.word}`);
+            popupElems.newGameBtn.addEventListener('click', () => {
+                resetGame();
+                removePopup(popupElems);
+            });
+        }, 1000);
         //run function to create a modal window for loosing the game
         //with a button to start a new game;
     }
     if(rightAnswers === wordLen) {
         blockKeys();
-        setTimeout(resetGame, 5000);
+        setTimeout(()=> {
+            insertPopup(popupElems);
+            insertText(`You Win!`, `The word is ${currentWord.word}`);
+            popupElems.newGameBtn.addEventListener('click', () => {
+                resetGame();
+                removePopup(popupElems);
+            });
+        }, 1000);
         //run a function to create a modal for winning the game
         //with a button to start a new one;
     }
@@ -128,5 +152,4 @@ export function manageGame(wordObj, elements) {
     insertWordBlocks();
     insertWordHint();
     insertGuessHint(); 
-  
 }
