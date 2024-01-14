@@ -74,6 +74,29 @@ export function manageGame(wordObj, elements) {
             countChecker();
         } else return;
     };
+    function resetGame() {
+        resetParams();
+        resetKeyboard();
+        resetWord()
+        insertWordBlocks();
+        insertWordHint();
+        insertGuessHint();
+    }
+    function resetKeyboard(){
+        Array.from(elements.keyboard.children).forEach((key) => {
+            key.classList.remove('keyboard__button_active');
+            key.removeAttribute('disabled');
+        })
+    }
+    function resetParams() {
+        mistakes = 0;
+        rightAnswers = 0;
+        currentLetter = '';
+    }
+    function resetWord() {
+        currentWord = chooseWord(wordObj);
+        wordLen = currentWord.word.length;
+    }
 
     elements.keyboard.addEventListener('click', keyboardHandler);
      
