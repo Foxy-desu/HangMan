@@ -1,0 +1,151 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.wrap {
+  display: flex;
+  height: 100dvh;
+  width: 100vw;
+  padding: 4rem 3rem;
+  gap: 2rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 40%;
+  padding: 1em;
+  overflow: hidden;
+  background-color: rgb(128, 128, 128);
+}
+
+.hero__image {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.hero__header {
+  color: black;
+  font-size: 4em;
+  vertical-align: middle;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 60%;
+  padding: 2em;
+  background-color: rgb(46, 46, 46);
+}
+
+.word-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5%;
+  width: 100%;
+}
+.word-wrap__letter-block {
+  font-size: 5rem;
+  font-weight: 500;
+  color: #d1d1d1;
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.hint-wrap {
+  width: 100%;
+  padding: 2rem;
+  margin-top: -40%;
+  color: #d1d1d1;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  max-width: 674px;
+  gap: 10px;
+}
+.keyboard__button {
+  font-size: 2.5rem;
+  width: 50px;
+  height: 50px;
+}
+.keyboard__button_active {
+  background-color: gray;
+  color: rgb(182, 178, 178);
+}
+@media (hover: hover) and (pointer: fine) {
+  .keyboard__button_active {
+    cursor: default !important;
+    background-color: gray !important;
+    color: rgb(182, 178, 178) !important;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .keyboard__button:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+  }
+}/*# sourceMappingURL=main.css.map */
