@@ -64,6 +64,18 @@ export function manageGame(wordObj, elements) {
         console.log(mistakes);
     }
     };
+    function keyboardHandler(e) {
+        const currentButton = e.target.closest('.keyboard__button');
+        if(currentButton) {
+           currentButton.classList.add('keyboard__button_active');
+            currentButton.setAttribute('disabled', '');
+            currentLetter = currentButton.innerText;
+            letterChecker(); 
+            countChecker();
+        } else return;
+    };
+
+    elements.keyboard.addEventListener('click', keyboardHandler);
      
     insertWordBlocks();
     insertWordHint();
