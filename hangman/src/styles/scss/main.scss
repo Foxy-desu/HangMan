@@ -1,6 +1,6 @@
-@import 'base/_reset.scss';
-@import 'abstracts/_variables.scss';
-@import 'abstracts/_typography.scss';
+@import "base/_reset.scss";
+@import "abstracts/_variables.scss";
+@import "abstracts/_typography.scss";
 
 //vars
 $TEXT_COLOR: black;
@@ -100,9 +100,9 @@ $H1_FSize: 4em;
     background-color: gray;
     color: rgb(182, 178, 178);
     @media (hover: hover) and (pointer: fine) {
-      cursor: default!important;
-      background-color: gray!important;
-      color: rgb(182, 178, 178)!important;
+      cursor: default !important;
+      background-color: gray !important;
+      color: rgb(182, 178, 178) !important;
     }
   }
 
