@@ -11,7 +11,7 @@ export function createButtons() {
 }
 export function createLetterBlocks(count) {
   const generateBlock = (id) => {
-    return `<span class="word-wrap__letter-block" id="${id}">x</span>`;
+    return `<span class="word-wrap__letter-block" id="${id}">_</span>`;
   };
 
   const blocks = [];
