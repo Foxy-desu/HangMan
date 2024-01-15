@@ -7,7 +7,7 @@ export const elems = () => {
   const main = document.createElement("main");
   const imageWrap = document.createElement("div");
   const h1 = document.createElement("h1");
-  const image = document.createElement("img");
+  // const image = document.createElement("img");
   const wordWrap = document.createElement("div");
   const letterBlocks = createLetterBlocks(7);
   const hintWrap = document.createElement("div");
@@ -16,6 +16,7 @@ export const elems = () => {
   const guessHintSpan = document.createElement("span");
   const keyboard = document.createElement("div");
   const buttons = createButtons();
+  const canvas = document.createElement('canvas');
 
   return {
     body,
@@ -24,7 +25,7 @@ export const elems = () => {
     main,
     imageWrap,
     h1,
-    image,
+    // image,
     wordWrap,
     letterBlocks,
     hintWrap,
@@ -33,5 +34,6 @@ export const elems = () => {
     guessHintSpan,
     keyboard,
     buttons,
+    canvas,
   };
 };
