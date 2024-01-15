@@ -64,8 +64,8 @@ video {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
 }
 
 footer,
@@ -130,7 +130,7 @@ input {
 .hero__image {
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .hero__header {
@@ -156,14 +156,13 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5%;
+  gap: 3%;
   width: 100%;
 }
 .word-wrap__letter-block {
   font-size: 5rem;
   font-weight: 500;
   color: #d1d1d1;
-  border-bottom: 2px solid #d1d1d1;
 }
 
 .hint-wrap {
@@ -209,4 +208,4 @@ input {
     background-color: gray;
     color: white;
   }
-} /*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

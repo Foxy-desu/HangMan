@@ -59,14 +59,14 @@ $H1_FSize: 4em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5%;
+  gap: 3%;
   width: 100%;
 
   &__letter-block {
     font-size: 5rem;
     font-weight: 500;
     color: #d1d1d1;
-    border-bottom: 2px solid #d1d1d1;
+    // border-bottom: 2px solid #d1d1d1;
   }
 }
 
