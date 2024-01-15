@@ -6,6 +6,7 @@ export const canvasCreator = (canvas) => {
 
     //drawing lines
     const drawLine = (fromX, fromY, toX, toY) => {
+        context.beginPath();
         context.moveTo(fromX, fromY);
         context.lineTo(toX, toY);
         context.stroke();
@@ -35,12 +36,17 @@ export const canvasCreator = (canvas) => {
 
     const rightLeg = () => {
         drawLine(70, 80, 90, 110);
-    };
+    }; 
+    
+    const clearCanvas = () => {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        console.log(context.canvas.width, context.canvas.height);
+    }
 
     //initial 
     const initialDrawing = () => {
-        //clear canv
-        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        // // //clear canv
+        // cleanCanvas();
         //bottom
         drawLine(10, 130, 130, 130);
         //left 
@@ -51,11 +57,13 @@ export const canvasCreator = (canvas) => {
         drawLine(70, 10, 70, 20);
     };
 
-    return { initialDrawing, head, body, leftArm, rightArm, leftLeg, rightLeg };
+   
+
+    return { initialDrawing, clearCanvas, head, body, leftArm, rightArm, leftLeg, rightLeg };
 };
 
-export const drawHangman = (count) => {
-    let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator();
+export const drawHangman = (count, canvas) => {
+    let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator(canvas);
   switch (count) {
     case 1:
       head();
