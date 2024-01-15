@@ -25,6 +25,10 @@ export function initialize(props) {
     props.guessHint.innerText = "Incorrect guesses: ";
     props.guessHintSpan.innerText = " / ";
   }
+  function applySize() {
+    props.canvas.width = 300;
+    props.canvas.height = 300;
+  }
   // function applySrc() {
   //   props.image.src = "./assets/images/gallows.svg";
   // }
@@ -43,6 +47,7 @@ export function initialize(props) {
   }
 
   applyClass();
+  applySize();
   applyText();
   // applySrc();
   adjustHtml();

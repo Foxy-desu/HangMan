@@ -1,8 +1,11 @@
 export const canvasCreator = (canvas) => {
     let context = canvas.getContext("2d");
+    // context.canvas.height = 300;
+    // context.canvas.width = 300;
     context.beginPath();
-    context.strokeStyle = "#000";
-    context.lineWidth = 2;
+    context.strokeStyle = "#fff";
+    context.lineWidth = 4;
+    
 
     //drawing lines
     const drawLine = (fromX, fromY, toX, toY) => {
@@ -14,28 +17,28 @@ export const canvasCreator = (canvas) => {
 
     const head = () => {
         context.beginPath();
-        context.arc(70, 30, 10, 0, Math.PI * 2, true);
+        context.arc(160, 73, 20, 0, Math.PI * 2, true);
         context.stroke();
     };
 
     const body = () => {
-        drawLine(70, 40, 70, 80);
+        drawLine(160, 93, 160, 170);
     };
 
     const leftArm = () => {
-        drawLine(70, 50, 50, 70);
+        drawLine(160, 105, 135, 155);
     };
 
     const rightArm = () => {
-        drawLine(70, 50, 90, 70);
+        drawLine(160, 105, 185, 155);
     };
 
     const leftLeg = () => {
-        drawLine(70, 80, 50, 110);
+        drawLine(160, 170, 135, 230);
     };
 
     const rightLeg = () => {
-        drawLine(70, 80, 90, 110);
+        drawLine(160, 170, 185, 230);
     }; 
     
     const clearCanvas = () => {
@@ -48,13 +51,13 @@ export const canvasCreator = (canvas) => {
         // // //clear canv
         // cleanCanvas();
         //bottom
-        drawLine(10, 130, 130, 130);
+        drawLine(20, 290, 275, 290);
         //left 
-        drawLine(10, 10, 10, 131);
+        drawLine(20, 10, 20, 292);
         //top
-        drawLine(10, 10, 70, 10);
+        drawLine(18, 10, 160, 10);
         //small diagonal
-        drawLine(70, 10, 70, 20);
+        drawLine(160, 8, 160, 55);
     };
 
    
