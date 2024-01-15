@@ -51,7 +51,8 @@ export function manageGame(wordObj, elements) {
       blockKeys();
       setTimeout(() => {
         insertPopup(popupElems);
-        insertText(`Game Over`, `The word was ${currentWord.word}`);
+        insertText(`Game Over`, `The word was '${currentWord.word}'.`);
+        popupElems.messageHeading.classList.add('modal__msgHeading_lost');
         popupElems.newGameBtn.addEventListener("click", () => {
           resetGame();
           removePopup(popupElems);
@@ -64,7 +65,8 @@ export function manageGame(wordObj, elements) {
       blockKeys();
       setTimeout(() => {
         insertPopup(popupElems);
-        insertText(`You Win!`, `The word is ${currentWord.word}`);
+        insertText(`You Win!`, `The word is '${currentWord.word}'.`);
+        popupElems.messageHeading.classList.add('modal__msgHeading_win');
         popupElems.newGameBtn.addEventListener("click", () => {
           resetGame();
           removePopup(popupElems);
