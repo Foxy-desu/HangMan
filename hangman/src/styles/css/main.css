@@ -108,37 +108,150 @@ input {
   border-radius: 0;
 }
 
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+body {
+  background-color: #9b9b9b;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.767);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  transition: none;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30vw;
+  height: 20vh;
+  min-width: 240px;
+  min-height: 189px;
+  background-color: #0e0e0e;
+  border: 1px solid #5f5151;
+}
+.modal__msg {
+  color: gray;
+  font-size: 20px;
+  line-height: normal;
+  margin-left: 28px;
+}
+.modal__msgHeading {
+  font-weight: 900;
+}
+.modal__msgHeading_lost {
+  color: #bf1313;
+}
+.modal__msgHeading_win {
+  color: #27bf13;
+}
+.modal__btn {
+  border-style: unset;
+  font-size: 1.5em;
+  background-color: #9b9b9b;
+}
+@media (hover: hover) and (pointer: fine) {
+  .modal__btn:hover {
+    cursor: pointer !important;
+    background-color: gray !important;
+    color: white !important;
+  }
+}
+.modal__btn:focus-visible {
+  box-sizing: border-box;
+  border: black dashed 1px !important;
+  outline: none;
+}
+
 .wrap {
   display: flex;
   height: 100dvh;
   width: 100vw;
   padding: 4rem 3rem;
-  gap: 2rem;
+  gap: 1rem;
+}
+@media screen and (max-width: 870px) {
+  .wrap {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 780px) {
+  .wrap {
+    flex-direction: column;
+    padding: 0;
+  }
 }
 
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4em;
   height: 100%;
   width: 40%;
-  padding: 1em;
+  padding: 2em;
   overflow: hidden;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(46, 46, 46);
+}
+@media screen and (max-width: 870px) {
+  .hero {
+    justify-content: space-evenly;
+    padding: 8em 2em 5em;
+    gap: 0;
+  }
+}
+@media screen and (max-width: 780px) {
+  .hero {
+    flex-direction: row;
+    width: 100%;
+    height: 40%;
+    padding: 3em 6em 2em;
+  }
+}
+@media screen and (max-width: 530px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding: 0em 1em 3em;
+  }
 }
 
-.hero__image {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.hero__image-wrap {
+  display: flex;
+  justify-content: center;
 }
 
 .hero__header {
-  color: black;
-  font-size: 4em;
+  color: #d1d1d1;
   vertical-align: middle;
   text-align: center;
   padding: 2rem 0;
+}
+@media screen and (max-width: 763px) {
+  .hero__header {
+    font-size: calc(38px + 44.2 * (100vw - 360px) / 1440);
+  }
+}
+@media screen and (min-width: 764px) {
+  .hero__header {
+    font-size: calc(38px + 26 * 100vw / 1440);
+  }
+}
+@media screen and (max-width: 780px) {
+  .hero__header {
+    padding: 2em 1em 1em 0;
+  }
 }
 
 .main {
@@ -148,8 +261,20 @@ input {
   justify-content: space-between;
   height: 100%;
   width: 60%;
-  padding: 2em;
+  padding: 5em 2em 2em;
   background-color: rgb(46, 46, 46);
+}
+@media screen and (max-width: 870px) {
+  .main {
+    padding: 9em 2em 6em;
+  }
+}
+@media screen and (max-width: 780px) {
+  .main {
+    width: 100%;
+    height: 60%;
+    padding: 3em 2em 2em;
+  }
 }
 
 .word-wrap {
@@ -160,19 +285,47 @@ input {
   width: 100%;
 }
 .word-wrap__letter-block {
-  font-size: 5rem;
   font-weight: 500;
   color: #d1d1d1;
+}
+@media screen and (max-width: 763px) {
+  .word-wrap__letter-block {
+    font-size: calc(40px + 68 * (100vw - 360px) / 1440);
+  }
+}
+@media screen and (min-width: 764px) {
+  .word-wrap__letter-block {
+    font-size: calc(40px + 40 * 100vw / 1440);
+  }
 }
 
 .hint-wrap {
   width: 100%;
   padding: 2rem;
-  margin-top: -40%;
+  margin-top: -10%;
   color: #d1d1d1;
   font-size: 2rem;
-  line-height: 3rem;
+  line-height: 2rem;
   text-align: center;
+}
+@media screen and (max-width: 763px) {
+  .hint-wrap {
+    font-size: calc(21px + 18.7 * (100vw - 360px) / 1440);
+  }
+}
+@media screen and (min-width: 764px) {
+  .hint-wrap {
+    font-size: calc(21px + 11 * 100vw / 1440);
+  }
+}
+.hint-wrap__guess-hint {
+  font-size: 0.8em;
+  padding-top: 1em;
+}
+@media screen and (max-width: 780px) {
+  .hint-wrap {
+    margin-top: 0%;
+  }
 }
 
 .keyboard {
@@ -187,9 +340,32 @@ input {
   gap: 10px;
 }
 .keyboard__button {
-  font-size: 2.5rem;
-  width: 50px;
-  height: 50px;
+  display: flex;
+  justify-content: center;
+  color: rgb(46, 46, 46);
+  background-color: #d1d1d1;
+}
+@media screen and (max-width: 763px) {
+  .keyboard__button {
+    font-size: calc(28px + 20.4 * (100vw - 360px) / 1440);
+  }
+}
+@media screen and (min-width: 764px) {
+  .keyboard__button {
+    font-size: calc(28px + 12 * 100vw / 1440);
+  }
+}
+@media screen and (max-width: 763px) {
+  .keyboard__button {
+    width: calc(40px + 17 * (100vw - 360px) / 1440);
+    height: calc(40px + 17 * (100vw - 360px) / 1440);
+  }
+}
+@media screen and (min-width: 764px) {
+  .keyboard__button {
+    width: calc(40px + 10 * 100vw / 1440);
+    height: calc(40px + 10 * 100vw / 1440);
+  }
 }
 .keyboard__button_active {
   background-color: gray;

@@ -1,47 +1,141 @@
 @import "base/_reset.scss";
 @import "abstracts/_variables.scss";
 @import "abstracts/_typography.scss";
+@import "abstracts/mixins";
 
-//vars
-$TEXT_COLOR: black;
-$H1_FSize: 4em;
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+body {
+  background-color: $BG_MID;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $POPUP_COLOR;
+  backdrop-filter: blur(2px);
+  transition: none;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30vw;
+  height: 20vh;
+  min-width: 240px;
+  min-height: 189px;
+  background-color: $MODAL_COLOR;
+  border: 1px solid $MODAL_BORDER;
+
+  &__msg {
+    color: gray;
+    font-size: 20px;
+    line-height: normal;
+    margin-left: 28px;
+  }
+
+  &__msgHeading {
+    font-weight: 900;
+    // color: #bf1313;
+
+    &_lost {
+      color: #bf1313;
+    }
+
+    &_win {
+      color: #27bf13;
+    }
+  }
+
+  &__btn {
+    border-style: unset;
+    font-size: 1.5em;
+    background-color: $BG_MID;
+
+    &:hover{
+      @media (hover: hover) and (pointer: fine) {
+        cursor: pointer !important;
+        background-color: $ACTIVE_BTN_BG !important;
+        color: white !important;
+      }
+    }
+
+    &:focus-visible {
+      box-sizing: border-box;
+      border: black dashed 1px !important;
+      outline: none;
+    }
+  }
+}
 
 .wrap {
   display: flex;
   height: 100dvh;
   width: 100vw;
   padding: 4rem 3rem;
-  gap: 2rem;
+  gap: 1rem;
+
+  @media screen and (max-width: 870px) {
+    padding: 0;
+  }
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+    padding: 0;
+  }
 }
 
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  // align-items: center;
+  justify-content: center;
+  gap: 4em;
   height: 100%;
   width: 40%;
-  padding: 1em;
+  padding: 2em;
   overflow: hidden;
+  background-color: $BG_DARK;
 
-  background-color: rgb(128, 128, 128);
+  @media screen and (max-width: 870px) {
+    justify-content: space-evenly;
+    padding: 8em 2em 5em;
+    gap: 0;
+  }
+  @media screen and (max-width: 780px) {
+    flex-direction: row;
+    width: 100%;
+    height: 40%;
+    padding: 3em 6em 2em;
+  }
+  @media screen and (max-width: 530px) {
+    flex-direction: column-reverse;
+    padding: 0em 1em 3em 
+  }
 }
 
 .hero__image-wrap {
-  // height: 80%;
-}
-
-.hero__image {
-  height: 100%;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
 }
 
 .hero__header {
-  color: $TEXT_COLOR;
-  font-size: $H1_FSize;
+  @include adaptive-font-size($pcFontSize: 64, $mobileFontSize: 38);
+  color: $LIGHT_TEXT;
   vertical-align: middle;
   text-align: center;
   padding: 2rem 0;
+
+  @media screen and (max-width: 780px) {
+    padding: 2em 1em 1em 0;
+  }
 }
 
 .main {
@@ -51,8 +145,17 @@ $H1_FSize: 4em;
   justify-content: space-between;
   height: 100%;
   width: 60%;
-  padding: 2em;
+  padding: 5em 2em 2em;
   background-color: rgb(46, 46, 46);
+
+  @media screen and (max-width: 870px) {
+    padding: 9em 2em 6em;
+  }
+  @media screen and (max-width: 780px) {
+    width: 100%;
+    height: 60%;
+    padding: 3em 2em 2em;
+  }
 }
 
 .word-wrap {
@@ -63,7 +166,7 @@ $H1_FSize: 4em;
   width: 100%;
 
   &__letter-block {
-    font-size: 5rem;
+    @include adaptive-font-size($pcFontSize: 80, $mobileFontSize: 40);
     font-weight: 500;
     color: #d1d1d1;
     // border-bottom: 2px solid #d1d1d1;
@@ -71,13 +174,23 @@ $H1_FSize: 4em;
 }
 
 .hint-wrap {
+  @include adaptive-font-size($pcFontSize: 32, $mobileFontSize: 21);
   width: 100%;
   padding: 2rem;
-  margin-top: -40%;
+  margin-top: -10%;
   color: #d1d1d1;
   font-size: 2rem;
-  line-height: 3rem;
+  line-height: 2rem;
   text-align: center;
+
+  &__guess-hint {
+    font-size: 0.8em;
+    padding-top: 1em;
+  }
+
+  @media screen and (max-width: 780px) {
+    margin-top: 0%;
+  }
 }
 
 .keyboard {
@@ -91,18 +204,21 @@ $H1_FSize: 4em;
   gap: 10px;
 
   &__button {
-    font-size: 2.5rem;
-    width: 50px;
-    height: 50px;
+    display: flex;
+    justify-content: center;
+    @include adaptive-font-size($pcFontSize: 40, $mobileFontSize: 28);
+    @include adaptive-block-size($pcWidth: 50, $mobileWidth: 40);
+    color: $DARK_TEXT;
+    background-color: $LIGHT_TEXT;
   }
 
   &__button_active {
-    background-color: gray;
-    color: rgb(182, 178, 178);
+    background-color: $ACTIVE_BTN_BG;
+    color: $ACTIVE_BTN_TEXT;
     @media (hover: hover) and (pointer: fine) {
       cursor: default !important;
-      background-color: gray !important;
-      color: rgb(182, 178, 178) !important;
+      background-color: $ACTIVE_BTN_BG !important;
+      color: $ACTIVE_BTN_TEXT !important;
     }
   }
 
@@ -114,3 +230,5 @@ $H1_FSize: 4em;
     }
   }
 }
+
+
