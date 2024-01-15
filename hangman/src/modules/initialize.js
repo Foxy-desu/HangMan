@@ -47,5 +47,5 @@ export function initialize(props) {
   // applySrc();
   adjustHtml();
   insertElems();
-  initialDrawing();
+  // initialDrawing();
 }
