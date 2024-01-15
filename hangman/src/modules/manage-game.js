@@ -3,6 +3,7 @@ import { popupElements } from "./popup";
 import { insertPopup, removePopup } from "./functions";
 import { drawHangman } from "./canvas";
 import { canvasCreator } from "./canvas";
+import {checkKeyboard} from "./layoutChecker";
 
 export function manageGame(wordObj, elements) {
   const {initialDrawing, clearCanvas} = canvasCreator(elements.canvas);
@@ -104,7 +105,9 @@ export function manageGame(wordObj, elements) {
   }
   function physicKeysHandler(e) {
     // e = e || window.event;
-    const charCode = e.keyCode;
+    const isEnglish = checkKeyboard(e);
+    if(isEnglish) {
+      const charCode = e.keyCode;
     const charStr = String.fromCharCode(charCode);
     console.log(charStr);
 
@@ -122,6 +125,8 @@ export function manageGame(wordObj, elements) {
       });
     }
     findBtn();
+    } else return
+    
   }
   function resetGame() {
     resetParams();
