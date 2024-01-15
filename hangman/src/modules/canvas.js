@@ -1,9 +1,9 @@
 export const canvasCreator = (canvas) => {
+    const LINE_COLOR = '#d1d1d1';
     let context = canvas.getContext("2d");
-    // context.canvas.height = 300;
-    // context.canvas.width = 300;
+    
     context.beginPath();
-    context.strokeStyle = "#fff";
+    context.strokeStyle = LINE_COLOR;
     context.lineWidth = 4;
     
 
