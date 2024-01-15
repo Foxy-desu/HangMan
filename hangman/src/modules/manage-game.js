@@ -1,8 +1,12 @@
 import { chooseWord, createLetterBlocks } from "./functions";
 import { popupElements } from "./popup";
 import { insertPopup, removePopup } from "./functions";
+import { drawHangman } from "./canvas";
+import { canvasCreator } from "./canvas";
 
 export function manageGame(wordObj, elements) {
+  const {initialDrawing, clearCanvas} = canvasCreator(elements.canvas);
+  
   let currentWord = chooseWord(wordObj);
   let wordLen = currentWord.word.length;
 
@@ -83,6 +87,7 @@ export function manageGame(wordObj, elements) {
       });
     } else {
       mistakesCount++;
+      drawHangman(mistakesCount, elements.canvas);
       console.log(mistakesCount);
     }
   }
@@ -124,6 +129,8 @@ export function manageGame(wordObj, elements) {
     insertWordBlocks();
     insertWordHint();
     insertGuessHint();
+    clearCanvas();
+    initialDrawing();
   }
   function resetKeyboard() {
     Array.from(elements.keyboard.children).forEach((key) => {
@@ -144,7 +151,9 @@ export function manageGame(wordObj, elements) {
 
   elements.keyboard.addEventListener("click", keyboardHandler);
   document.addEventListener("keypress", physicKeysHandler);
+  initialDrawing();
   insertWordBlocks();
   insertWordHint();
   insertGuessHint();
+  console.log('initialize');
 }
