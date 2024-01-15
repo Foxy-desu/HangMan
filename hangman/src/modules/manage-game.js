@@ -99,6 +99,7 @@ export function manageGame(wordObj, elements) {
       currentLetter = currentButton.innerText;
       letterChecker();
       countChecker();
+      hitBtns.add(currentButton.innerText.toLowerCase());
     } else return;
   }
   function physicKeysHandler(e) {
