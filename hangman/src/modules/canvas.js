@@ -43,7 +43,6 @@ export const canvasCreator = (canvas) => {
     
     const clearCanvas = () => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        console.log(context.canvas.width, context.canvas.height);
     }
 
     //initial 

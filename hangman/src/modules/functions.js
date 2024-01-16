@@ -31,7 +31,6 @@ export function chooseWord(words) {
   }
 
   const result = getWordObject(words);
-  console.log(result);
   return result;
 }
 export function insertPopup(popupCreator) {

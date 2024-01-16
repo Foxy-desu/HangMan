@@ -7,10 +7,9 @@ import {checkKeyboard} from "./layoutChecker";
 
 export function manageGame(wordObj, elements) {
   const {initialDrawing, clearCanvas} = canvasCreator(elements.canvas);
-  
+
   let prevWord = '';
   let currentWord = chooseWord(wordObj);
-  
   
   let wordLen = currentWord.word.length;
 
@@ -98,13 +97,11 @@ export function manageGame(wordObj, elements) {
         if (currentLetter === letter) {
           letterBlocks[index].innerText = currentLetter.toLowerCase();
           rightAnswers++;
-          console.log(rightAnswers);
         }
       });
     } else {
       mistakesCount++;
       drawHangman(mistakesCount, elements.canvas);
-      console.log(mistakesCount);
     }
   }
   function keyboardHandler(e) {
@@ -124,7 +121,6 @@ export function manageGame(wordObj, elements) {
     if(isEnglish) {
       const charCode = e.keyCode;
     const charStr = String.fromCharCode(charCode);
-    console.log(charStr);
 
     function findBtn() {
       const buttons = Array.from(elements.keyboard.children);
@@ -152,6 +148,7 @@ export function manageGame(wordObj, elements) {
     insertGuessHint();
     clearCanvas();
     initialDrawing();
+    console.log(currentWord)
   }
   function resetKeyboard() {
     Array.from(elements.keyboard.children).forEach((key) => {
@@ -176,5 +173,5 @@ export function manageGame(wordObj, elements) {
   insertWordBlocks();
   insertWordHint();
   insertGuessHint();
-  console.log('initialize');
+  console.log(currentWord);
 }
