@@ -54,6 +54,7 @@ export function insertPopup(popupCreator) {
     elems.messageWrap.append(elems.messageHeading, elems.messageDetails);
   }
   appendElems();
+  elems.newGameBtn.focus();
 }
 export function removePopup(popupCreator) {
   const elems = popupCreator;
