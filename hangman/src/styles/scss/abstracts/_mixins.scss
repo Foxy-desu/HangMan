@@ -1,11 +1,12 @@
 @mixin adaptive-font-size($maxLayoutWidth: 1440, $pcFontSize, $mobileFontSize, $minLayoutWidth: 360) {
     $addSize: $pcFontSize - $mobileFontSize;
     $addMobileSize: $addSize + $addSize * 0.7;
-    @media screen and (max-width: 763px) {
+
+    @media screen and (width <= 763px) {
         font-size: calc(#{$mobileFontSize + px} + #{$addMobileSize} * ((100vw - #{$minLayoutWidth + px}) / #{$maxLayoutWidth}));
     }
 
-    @media screen and (min-width: 764px) {
+    @media screen and (width >= 764px) {
         font-size: calc(#{$mobileFontSize + px} + #{$addSize} * (100vw / #{$maxLayoutWidth}));
     }
 }
@@ -13,11 +14,13 @@
 @mixin adaptive-block-size($maxLayoutWidth: 1440, $pcWidth, $mobileWidth, $minLayoutWidth: 360) {
     $addSize: $pcWidth - $mobileWidth;
     $addMobileWidth: $addSize + $addSize * 0.7;
-    @media screen and (max-width: 763px) {
+
+    @media screen and (width <= 763px) {
         width: calc(#{$mobileWidth + px} + #{$addMobileWidth} * ((100vw - #{$minLayoutWidth + px}) / #{$maxLayoutWidth}));
         height: calc(#{$mobileWidth + px} + #{$addMobileWidth} * ((100vw - #{$minLayoutWidth + px}) / #{$maxLayoutWidth}));
     }
-    @media screen and (min-width: 764px) {
+
+    @media screen and (width >= 764px) {
         width: calc(#{$mobileWidth + px} + #{$addSize} * (100vw / #{$maxLayoutWidth}));
         height: calc(#{$mobileWidth + px} + #{$addSize} * (100vw / #{$maxLayoutWidth}));
 
