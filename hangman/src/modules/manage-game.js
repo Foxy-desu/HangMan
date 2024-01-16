@@ -8,7 +8,10 @@ import {checkKeyboard} from "./layoutChecker";
 export function manageGame(wordObj, elements) {
   const {initialDrawing, clearCanvas} = canvasCreator(elements.canvas);
   
+  let prevWord = '';
   let currentWord = chooseWord(wordObj);
+  
+  
   let wordLen = currentWord.word.length;
 
   let hitBtns = new Set();
@@ -54,7 +57,12 @@ export function manageGame(wordObj, elements) {
         insertText(`Game Over`, `The word was '${currentWord.word}'.`);
         popupElems.messageHeading.classList.add('modal__msgHeading_lost');
         popupElems.newGameBtn.addEventListener("click", () => {
+          prevWord = currentWord;
           resetGame();
+          while(currentWord === prevWord) {
+            resetGame();
+            console.log('changing')
+          };
           removePopup(popupElems);
         });
       }, 1000);
@@ -68,7 +76,12 @@ export function manageGame(wordObj, elements) {
         insertText(`You Win!`, `The word is '${currentWord.word}'.`);
         popupElems.messageHeading.classList.add('modal__msgHeading_win');
         popupElems.newGameBtn.addEventListener("click", () => {
+          prevWord = currentWord;
           resetGame();
+          while(currentWord === prevWord) {
+            resetGame();
+            console.log('changing')
+          };
           removePopup(popupElems);
         });
       }, 1000);
